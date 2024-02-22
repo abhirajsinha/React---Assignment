@@ -13,6 +13,8 @@ function Form() {
 
     const removeColumn = (index) => {
         setColumns(columns.filter((_, i) => i !== index));
+        // Remove buttons associated with the column
+        setButtons(buttons.filter((_, i) => i % columns.length !== index));
     };
 
     const handleDrop = (e) => {
@@ -25,8 +27,7 @@ function Form() {
                     style={{
                         position: 'absolute',
                         left: e.clientX - dragStartOffset.x,
-                        top: e.clientY - dragStartOffset.y,
-                        zIndex: 5,
+                        top: e.clientY - dragStartOffset.y,                        
                     }}
                     draggable
                     onDragStart={(e) => handleDragStart(e, buttons.length)}
